@@ -15,6 +15,6 @@ before_script:
   - cd src/
 
 script:
-  - docker build -t pe46dro/XBackBone-docker src/
-  - docker run -p 80:80 -d -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/XBackBone-docker
+  - docker build -t pe46dro/xbackbone-docker src/
+  - docker run -p 80:80 -d -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
   - curl --silent --show-error --fail http://127.0.0.1/login
