@@ -4,8 +4,8 @@ MAINTAINER Pietro Marangon <pietro@marangon.me>
 ARG XBACKBONE_VERSION=1.2
 ENV URL=http:\/\/127.0.0.1
 
-ADD src/nginx.conf /opt/docker/etc/nginx/vhost.common.d/1-xbackbone.conf
-ADD src/configure.sh /opt/docker/provision/entrypoint.d/30-app.sh
+ADD ./nginx.conf /opt/docker/etc/nginx/vhost.common.d/1-xbackbone.conf
+ADD ./configure.sh /opt/docker/provision/entrypoint.d/30-app.sh
 
 USER application
 
