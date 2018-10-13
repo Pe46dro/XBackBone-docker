@@ -3,7 +3,7 @@
 docker kill xbackbone
 docker rm xbackbone
 
-docker build -t pe46dro/xbackbone-docker ./prod/
+docker build -t pe46dro/xbackbone-docker:dev ./src/
 
 mkdir -p /srv/xbb/storage
 mkdir -p /srv/xbb/database
@@ -16,5 +16,6 @@ docker run -p 80:80 \
 		-v /srv/xbb/database:/app/resources/database \
 		-v /srv/xbb/logs:/app/logs \
 		-e URL=http:\/\/127.0.0.1 \
+		-e GENERATE_RELEASE=TRUE \
 		--name xbackbone \
-		pe46dro/xbackbone-docker
+		pe46dro/xbackbone-docker:dev

@@ -4,8 +4,7 @@
 This is the Docker image for [XBackBone](https://github.com/SergiX44/XBackBone) ~ based on webdevops/php-nginx.
 
 # Supported tags and respective `Dockerfile`
--	[`1.2`, `1.2.0`, `latest` (*prod/Dockerfile*)]
--	[`dev` (*dev/Dockerfile*)]
+-	[`dev` (*dev/Dockerfile*)](https://github.com/webdevops/Dockerfile/tree/fix-build)
 
 # Quick reference
 
