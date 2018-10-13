@@ -4,8 +4,8 @@ MAINTAINER Pietro Marangon <pietro@marangon.me>
 ENV URL=http:\/\/127.0.0.1
 ENV GENERATE_RELEASE=FALSE
 
-ADD src/nginx.conf /opt/docker/etc/nginx/vhost.common.d/1-xbackbone.conf
-ADD src/configure.sh /opt/docker/provision/entrypoint.d/30-app.sh
+ADD ./nginx.conf /opt/docker/etc/nginx/vhost.common.d/1-xbackbone.conf
+ADD ./configure.sh /opt/docker/provision/entrypoint.d/30-app.sh
 
 RUN apk add --update nodejs npm; \
 	chmod 644 /opt/docker/provision/entrypoint.d/30-app.sh; \
