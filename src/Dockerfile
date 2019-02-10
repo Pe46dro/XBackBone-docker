@@ -9,11 +9,10 @@ ADD ./configure.sh /opt/docker/provision/entrypoint.d/30-app.sh
 
 USER application
 
-RUN wget "https://github.com/SergiX44/XBackBone/releases/download/${XBACKBONE_VERSION}/release-v${XBACKBONE_VERSION}$
+RUN wget "https://github.com/SergiX44/XBackBone/releases/download/${XBACKBONE_VERSION}/release-v${XBACKBONE_VERSION}.zip" -O /app/master.zip; \
         cd /app; \
         unzip master.zip; \
         rm master.zip; \
         mv config.example.php config.php
 
 VOLUME [ "/app/storage", "/app/resources/database", "/app/logs"]
-
