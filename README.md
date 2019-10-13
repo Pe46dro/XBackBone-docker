@@ -28,9 +28,10 @@ You can use the following command to start the container and map the ports to th
 
 ```console
 $ docker run -p 80:80 \
-		-e URL=http:\/\/127.0.0.1 \
-		--name xbb \
-		pe46dro/xbackbone-docker
+    -e APP_NAME=XBackBone \
+    -e URL=http:\/\/127.0.0.1 \
+    --name xbb \
+    pe46dro/xbackbone-docker
 ```
 
 ## Container shell access
@@ -42,6 +43,10 @@ $ docker logs xbb
 
 ## Environment Variables
 When you start this image, you can adjust the configuration by passing one or more environment variables on the `docker run` command line.
+
+### `APP_NAME`
+This will specify the app name, if none is provided the default is `XBackBone`
+`-e APP_NAME=XBackBone`
 
 ### `URL`
 This will specify the app url, slashes need to be escaped like follow

@@ -2,6 +2,7 @@ FROM webdevops/php-nginx:alpine-php7
 MAINTAINER Pietro Marangon <pietro@marangon.me>
 
 ARG XBACKBONE_VERSION=2.6.5
+ENV APP_NAME=XBackBone
 ENV URL=http:\/\/127.0.0.1
 
 ADD ./nginx.conf /opt/docker/etc/nginx/vhost.common.d/1-xbackbone.conf
