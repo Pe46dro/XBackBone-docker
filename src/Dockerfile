@@ -14,9 +14,10 @@ RUN wget "https://github.com/SergiX44/XBackBone/releases/download/${XBACKBONE_VE
         cd /app; \
         unzip master.zip; \
         rm master.zip; \
-        mv config.example.php config.php
+        mv config.example.php config.php; \
+        echo "client_max_body_size ${PHP_UPLOAD_MAX_FILESIZE};" > /opt/docker/etc/nginx/conf/client_max_body_size.conf
 
-VOLUME [ "/app/storage", "/app/resources/database", "/app/logs"]
+VOLUME [ "/app/", "/app/storage", "/app/resources/database", "/app/logs"]
 
 #Fix #3
 USER root
