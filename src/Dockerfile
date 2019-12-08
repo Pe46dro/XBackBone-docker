@@ -1,7 +1,7 @@
 FROM webdevops/php-nginx:alpine-php7
 MAINTAINER Pietro Marangon <pietro@marangon.me>
 
-ARG XBACKBONE_VERSION=2.6.5
+ARG XBACKBONE_VERSION=3.0.2
 ENV APP_NAME=XBackBone
 ENV URL=http:\/\/127.0.0.1
 
