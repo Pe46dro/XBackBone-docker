@@ -14,13 +14,14 @@ before_install:
 script:
   - docker build -t pe46dro/xbackbone-docker ./src/
   - docker run -p 80:80 -d  -e PHP_UPLOAD_MAX_FILESIZE=1G -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
-  - sleep 30 && curl --silent --show-error --fail http://127.0.0.1/login
+  - sleep 15 && curl --silent --show-error --fail http://127.0.0.1/login
   # Test fix #3
   - docker stop xbackbone 
   - docker start xbackbone
-  - sleep 30 && curl --silent --show-error --fail http://127.0.0.1/login
+  - sleep 15 && curl --silent --show-error --fail http://127.0.0.1/login
   - "curl  --silent --show-error --fail 'http://127.0.0.1/login' -H 'upgrade-insecure-requests: 1' -H 'content-type: application/x-www-form-urlencoded' --data 'username=admin&password=admin' --compressed --cookie-jar cookie.txt -SD -"
   - "curl  --silent --show-error --fail 'http://127.0.0.1/user/1/refreshToken' -X POST --compressed -b cookie.txt -SD -"
   - "curl  --silent --show-error --fail 'http://127.0.0.1/user/1/config/script'  -O -J --location-trusted --max-redirs 10 --output script.sh --compressed -b cookie.txt -SD -"
+  - ls -la
   - dd if=/dev/zero of=file.txt count=512 bs=1048576
-  - bash script.sh upload file.txt
+  - bash xbackbone_uploader_admin.sh upload file.txt
