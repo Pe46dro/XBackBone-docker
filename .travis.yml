@@ -24,4 +24,4 @@ script:
   - "curl  --silent --show-error --fail 'http://127.0.0.1/user/1/config/script'  -O -J --location-trusted --max-redirs 10 --output script.sh --compressed -b cookie.txt -SD -"
   - ls -la
   - dd if=/dev/zero of=file.txt count=512 bs=1048576
-  - bash xbackbone_uploader_admin.sh upload file.txt
+  - bash xbackbone_uploader_admin.sh file.txt
