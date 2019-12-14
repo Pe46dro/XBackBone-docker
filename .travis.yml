@@ -13,7 +13,7 @@ before_install:
 
 script:
   - docker build -t pe46dro/xbackbone-docker ./src/
-  - -mkdir -p ./xbb/storage
+  - mkdir -p ./xbb/storage
   - mkdir -p ./xbb/database
   - mkdir -p ./xbb/logs
   - chown -R 1000:1000 ./xbb
