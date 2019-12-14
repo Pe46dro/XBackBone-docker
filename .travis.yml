@@ -17,7 +17,8 @@ script:
   - mkdir -p ./xbb/database
   - mkdir -p ./xbb/logs
   - sudo chown -R 1000:1000 ./xbb
-  - docker run -p 80:80 -d -v ./xbb/storage:/app/storage -v ./xbb/database:/app/resources/database -v ./xbb/logs:/app/logs -e PHP_UPLOAD_MAX_FILESIZE=1G -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
+  - pwd
+  - docker run -p 80:80 -d -v /home/travis/xbb/storage:/app/storage -v /home/travis/xbb/database:/app/resources/database -v /home/travis/xbb/logs:/app/logs -e PHP_UPLOAD_MAX_FILESIZE=1G -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
   - sleep 15 && curl --silent --show-error --fail http://127.0.0.1/login
   # Test fix #3
   - docker stop xbackbone 
