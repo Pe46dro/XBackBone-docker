@@ -13,7 +13,11 @@ before_install:
 
 script:
   - docker build -t pe46dro/xbackbone-docker ./src/
-  - docker run -p 80:80 -d  -e PHP_UPLOAD_MAX_FILESIZE=1G -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
+  - -mkdir -p /srv/xbb/storage
+  - mkdir -p /srv/xbb/database
+  - mkdir -p /srv/xbb/logs
+  - chown -R 1000:1000 /srv/xbb
+  - docker run -p 80:80 -d -v /srv/xbb/storage:/app/storage -v /srv/xbb/database:/app/resources/database -v /srv/xbb/logs:/app/logs -e PHP_UPLOAD_MAX_FILESIZE=1G -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
   - sleep 15 && curl --silent --show-error --fail http://127.0.0.1/login
   # Test fix #3
   - docker stop xbackbone 
