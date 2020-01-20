@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PHP_POST_MAX_SIZE=$PHP_UPLOAD_MAX_FILESIZE
+export PHP_POST_MAX_SIZE=${PHP_UPLOAD_MAX_FILESIZE:-50m}
 
 sed -i "s@50m@${PHP_UPLOAD_MAX_FILESIZE:-50m}@g" /opt/docker/etc/nginx/vhost.common.d/10-general.conf
 sed -i "s@https:\/\/localhost@$URL@g" /app/config.php
