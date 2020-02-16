@@ -9,4 +9,6 @@ sed -i "s/return\ \[/&\n\ \ \ \ \'app_name\' => \'$APP_NAME\',/" /app/config.php
 if [ ! -f /app/resources/database/xbackbone.db ]; then
 	cd /app
 	su -c "php bin/migrate --install" application
+	su -c "php bin/migrate" application
+	su -c "php bin/clean" application
 fi
