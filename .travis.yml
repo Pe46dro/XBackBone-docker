@@ -32,6 +32,7 @@ script:
   - bash xbackbone_uploader_admin.sh file.txt
   - docker stop xbackbone 
   - docker rm xbackbone
+  - rm -rf xbackbone_uploader_admin.sh file.txt cookie.txt
   - docker volume create xbb_storage
   - docker volume create xbb_database
   - docker volume create xbb_logs
