@@ -12,3 +12,5 @@ if [ ! -f /app/resources/database/xbackbone.db ]; then
 	su -c "php bin/migrate" application
 	su -c "php bin/clean" application
 fi
+
+chown -R 1000:1000 /app
