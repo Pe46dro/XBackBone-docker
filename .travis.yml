@@ -30,6 +30,7 @@ script:
   - ls -la
   - dd if=/dev/zero of=file.txt count=512 bs=1048576
   - bash xbackbone_uploader_admin.sh file.txt
+  - docker stop xbackbone 
   - docker rm xbackbone
   - docker volume create xbb_storage
   - docker volume create xbb_database
