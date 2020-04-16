@@ -14,7 +14,8 @@ RUN wget "https://github.com/SergiX44/XBackBone/releases/download/${XBACKBONE_VE
         cd /app; \
         unzip master.zip; \
         rm master.zip; \
-        mv config.example.php config.php
+        mv config.example.php config.php; \
+        chown -R 1000:1000 /app
 
 VOLUME [ "/app/", "/app/storage", "/app/resources/database", "/app/logs"]
 
