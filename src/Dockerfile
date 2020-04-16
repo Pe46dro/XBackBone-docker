@@ -21,5 +21,3 @@ VOLUME [ "/app/", "/app/storage", "/app/resources/database", "/app/logs"]
 
 #Fix #3
 USER root
-
-RUN chown -R 1000:1000 /app
