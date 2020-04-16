@@ -14,10 +14,12 @@ RUN wget "https://github.com/SergiX44/XBackBone/releases/download/${XBACKBONE_VE
         cd /app; \
         unzip master.zip; \
         rm master.zip; \
-        mv config.example.php config.php; \
-        chown -R 1000:1000 /app
+        mv config.example.php config.php
+        
 
 VOLUME [ "/app/", "/app/storage", "/app/resources/database", "/app/logs"]
+
+RUN chown -R 1000:1000 /app
 
 #Fix #3
 USER root
