@@ -8,7 +8,7 @@ if [ ! -f /app/config/config.php ]; then
 	mv /app/config.example.php /app/config/config.php
 	ln -s /app/config/config.php /app/config.php
 else
-	if [ ! -f /app/config.example.php ]; then
+	if [ -f /app/config.example.php ]; then
 		mv /app/config.example.php /app/config/config-newversion.php
 	fi
 	if [ ! -f /app/config.php ]; then
