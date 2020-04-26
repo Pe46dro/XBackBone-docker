@@ -11,7 +11,9 @@ else
 	if [ ! -f /app/config.example.php ]; then
 		mv /app/config.example.php /app/config/config-newversion.php
 	fi
-	ln -s /app/config/config.php /app/config.php
+	if [ ! -f /app/config/config.php ]; then
+		ln -s /app/config/config.php /app/config.php
+	fi
 fi
 
 sed -i "s@https:\/\/localhost@$URL@g" /app/config.php
