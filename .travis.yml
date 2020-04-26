@@ -27,6 +27,7 @@ script:
   # Test fix #3
   - docker stop xbackbone 
   - docker start xbackbone
+  - docker logs xbackbone
   
   # Test login and upload
   - bash tests/test_login.sh
@@ -58,6 +59,7 @@ script:
   # Test fix #3
   - docker-compose stop
   - docker-compose start
+  - docker-compose logs
   
   # Test login and upload
   - bash tests/test_login.sh
