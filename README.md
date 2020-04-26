@@ -69,6 +69,7 @@ You can specify the tag from [XBackBone](https://github.com/SergiX44/XBackBone/r
 *	/app/storage
 *	/app/resources/database
 *	/app/logs
+*	/app/config _(to keep config files - **Docker container only**)_
 
 ### Permissions
 The folder on host system need to have both **UID** and **GID** *1000*
@@ -110,9 +111,23 @@ Refer to [webdevops documentation](https://dockerfile.readthedocs.io/en/latest/c
 mkdir -p /srv/xbb/storage
 mkdir -p /srv/xbb/database
 mkdir -p /srv/xbb/logs
+mkdir -p /srv/xbb/config
 
 chown -R 1000:1000 /srv/xbb
 ```
+
+# MySQL Database
+
+ - Clone repo
+ - Customize ENV flags in xbb.env
+ - Build and run
+
+```bash
+git clone https://github.com/Pe46dro/XBackBone-docker.git .
+docker-compose up -d
+```
+
+
 # Mantainer
  * [Pe46dro](https://github.com/Pe46dro) - Creator
 
