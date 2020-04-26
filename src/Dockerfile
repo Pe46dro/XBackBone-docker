@@ -14,10 +14,9 @@ RUN wget "https://github.com/SergiX44/XBackBone/releases/download/${XBACKBONE_VE
         cd /app; \
         unzip master.zip; \
         rm master.zip; \
-        mv config.example.php config.php
-        
+	mkdir -p /app/config
 
-VOLUME [ "/app/", "/app/storage", "/app/resources/database", "/app/logs"]
+VOLUME [ "/app/storage", "/app/resources/database", "/app/logs", "/app/config"]
 
 #Fix #3
 USER root

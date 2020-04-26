@@ -1,0 +1,43 @@
+version: '3.3'
+services:
+  app:
+    build: ./src
+    restart: always
+    env_file:
+     - ./xbb.env
+    ports:
+      - '80:80'
+    expose:
+      - '80'
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - "db"
+    volumes:
+      - xbb_storage:/app/storage
+      - xbb_database:/app/resources/database
+      - xbb_logs:/app/logs
+      - xbb_config:/app/config
+  db:
+    image: mariadb:10.4
+    restart: always
+    env_file:
+      - ./xbb.env
+    ports:
+      - '3306'
+    volumes:
+      - xbb_mariadb:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  xbb_mariadb:
+  xbb_storage:
+  xbb_database:
+  xbb_logs:
+  xbb_config:
