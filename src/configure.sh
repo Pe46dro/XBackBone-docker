@@ -4,9 +4,6 @@ export PHP_POST_MAX_SIZE=${PHP_UPLOAD_MAX_FILESIZE:-50m}
 
 sed -i "s@50m@${PHP_UPLOAD_MAX_FILESIZE:-50m}@g" /opt/docker/etc/nginx/vhost.common.d/10-general.conf
 
-ls -la /app/
-ls -la /app/config/
-
 if [ ! -f /app/config/config.php ]; then
 	mv /app/config.example.php /app/config/config.php
 	ln -s /app/config/config.php /app/config.php
@@ -28,14 +25,13 @@ if [ "${DB_TYPE:-sqlite}" == "mysql" ]; then
 fi
 
 if [ ! -f /app/storage/.installed ]; then
-	cd /app
-	su -c "php bin/migrate --install" application
-	su -c "php bin/migrate" application
-	su -c "php bin/clean" application
+	su -c "php /app/bin/migrate --install" application
+	su -c "php /app/bin/migrate" application
+	su -c "php /app/bin/clean" application
 	echo '-' > /app/storage/.installed
 else
-	su -c "php bin/migrate" application
-        su -c "php bin/clean" application
+	su -c "php /app/bin/migrate" application
+        su -c "php /app/bin/clean" application
 fi
 
 chown -R 1000:1000 /app
