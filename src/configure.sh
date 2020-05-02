@@ -21,7 +21,7 @@ sed -i "s/return\ \[/&\n\ \ \ \ \'app_name\' => \'$APP_NAME\',/" /app/config.php
 
 if [ "${DB_TYPE:-sqlite}" == "mysql" ]; then
 	sed -i "s/sqlite/mysql/g" /app/config.php
-	sed -i "s/realpath(__DIR__).'\/resources\/database\/xbackbone.db'/'host=db;dbname=$MYSQL_DATABASE;charset=utf8mb4'/g" /app/config.php
+	sed -i "s/realpath(__DIR__).'\/resources\/database\/xbackbone.db'/'host=$MYSQL_HOST;dbname=$MYSQL_DATABASE;charset=utf8mb4'/g" /app/config.php
 	sed -i "s/'username'   => null/'username'   => '$MYSQL_USER'/g" /app/config.php
 	sed -i "s/'password'   => null/'password'   => '$MYSQL_PASSWORD'/g" /app/config.php
 fi
