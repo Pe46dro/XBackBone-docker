@@ -126,7 +126,9 @@ chown -R 1000:1000 /srv/xbb
 git clone https://github.com/Pe46dro/XBackBone-docker.git .
 docker-compose up -d
 ```
-
+# Upgrade from version < 3.1.4
+Run the following command before performing the upgrade:
+`echo '-' > YOUR_STORAGE_VOLUME/storage/.installed`
 
 # Mantainer
  * [Pe46dro](https://github.com/Pe46dro) - Creator
