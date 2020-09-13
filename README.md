@@ -5,6 +5,7 @@ This is the Docker image for [XBackBone](https://github.com/SergiX44/XBackBone) 
 
 # Supported tags and respective `Dockerfile`
 -	[`latest` (**THIS REPO**/src/Dockerfile)]
+-	[`3.2`,`3.2.0` (*src/Dockerfile*)]
 -	[`3.1`,`3.1.4` (*src/Dockerfile*)]
 -	[`3.0`,`3.0.2`, (*src/Dockerfile*)]
 -	[`2.6`,`2.6.5` (*src/Dockerfile*)]
