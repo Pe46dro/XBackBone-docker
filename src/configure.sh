@@ -27,13 +27,13 @@ if [ "${DB_TYPE:-sqlite}" == "mysql" ]; then
 fi
 
 if [ ! -f /app/storage/.installed ]; then
-	su -c "php /app/bin/migrate --install" application
-	su -c "php /app/bin/migrate" application
-	su -c "php /app/bin/clean" application
+	su -c "php /app/bin/migrate --install" $CONTAINER_UID
+	su -c "php /app/bin/migrate" $CONTAINER_UID
+	su -c "php /app/bin/clean" $CONTAINER_UID
 	echo '-' > /app/storage/.installed
 else
-	su -c "php /app/bin/migrate" application
-        su -c "php /app/bin/clean" application
+	su -c "php /app/bin/migrate" $CONTAINER_UID
+        su -c "php /app/bin/clean" $CONTAINER_UID
 fi
 
-chown -R 1000:1000 /app
+chown -R $CONTAINER_UID /app
