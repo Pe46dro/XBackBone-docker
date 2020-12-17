@@ -19,9 +19,9 @@ script:
   - mkdir -p ./xbb/database
   - mkdir -p ./xbb/logs
   - mkdir -p ./xbb/config
-  - sudo chown -R 1000:1000 ./xbb
+  - sudo chown -R 1002:1002 ./xbb
 
-  - docker run -p 80:80 -d -v $(pwd)/xbb/storage:/app/storage -v $(pwd)/xbb/database:/app/resources/database -v $(pwd)/xbb/logs:/app/logs -v $(pwd)/xbb/config:/app/config -e PHP_UPLOAD_MAX_FILESIZE=1G -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
+  - docker run -p 80:80 -d -v $(pwd)/xbb/storage:/app/storage -v $(pwd)/xbb/database:/app/resources/database -v $(pwd)/xbb/logs:/app/logs -v $(pwd)/xbb/config:/app/config -e PHP_UPLOAD_MAX_FILESIZE=1G -e CONTAINER_UID=1002 -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
   - bash tests/test_login.sh
   
   # Test fix #3
@@ -39,7 +39,7 @@ script:
   - docker volume create xbb_database
   - docker volume create xbb_logs
   - docker volume create xbb_config
-  - docker run -p 80:80 -d -v xbb_storage:/app/storage -v xbb_database:/app/resources/database -v xbb_logs:/app/logs -v xbb_config:/app/config -e PHP_UPLOAD_MAX_FILESIZE=1G -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
+  - docker run -p 80:80 -d -v xbb_storage:/app/storage -v xbb_database:/app/resources/database -v xbb_logs:/app/logs -v xbb_config:/app/config -e PHP_UPLOAD_MAX_FILESIZE=1G  -e CONTAINER_UID=1002 -e URL=http:\/\/127.0.0.1 --name xbackbone pe46dro/xbackbone-docker
   - bash tests/test_login.sh
   
   # Test fix #3
