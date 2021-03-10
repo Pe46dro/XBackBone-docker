@@ -33,7 +33,7 @@ sed -i "/'port' *=>/d" /app/config.php
 sed -i "/'base_domain' *=>/d" /app/config.php
 sed -i "/'user_domain' *=>/d" /app/config.php
 sed -i "/'rdn_attribute' *=>/d" /app/config.php
-sed -i "/\(.*\)],/d" /app/config.php
+sed -i "/], *\/\/ldap end/d" /app/config.php
 
 if [ "${LDAP_ENABLED:-false}" == "true" ]; then
 	sed -i "/^];/i\    'ldap' => [" config.php
@@ -43,7 +43,7 @@ if [ "${LDAP_ENABLED:-false}" == "true" ]; then
 	sed -i "/^];/i\        'base_domain'   => '${LDAP_BASE_DOMAIN:-dc=example,dc=com}'," /app/config.php
 	sed -i "/^];/i\        'user_domain'   => '${LDAP_USER_DOMAIN:-ou=Users}'," /app/config.php
 	sed -i "/^];/i\        'rdn_attribute' => '${LDAP_RDN_ATTRIBUTE:-uid=}'," /app/config.php
-	sed -i "/^];/i\    ]," config.php
+	sed -i "/^];/i\    ], //ldap end" config.php
 fi
 
 if [ ! -f /app/storage/.installed ]; then
