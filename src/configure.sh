@@ -26,7 +26,6 @@ if [ "${DB_TYPE:-sqlite}" == "mysql" ]; then
 	sed -i "s/'password'   => null/'password'   => '$MYSQL_PASSWORD'/g" /app/config.php
 fi
 
-
 sed -i "/'ldap' *=>/d" /app/config.php
 sed -i "/'enabled' *=>/d" /app/config.php
 sed -i "/'host' *=>/d" /app/config.php
@@ -37,7 +36,6 @@ sed -i "/'rdn_attribute' *=>/d" /app/config.php
 sed -i "/\(.*\)],/d" /app/config.php
 
 if [ "${LDAP_ENABLED:-false}" == "true" ]; then
-
 	sed -i "/^];/i\    'ldap' => [" config.php
 	sed -i "/^];/i\        'enabled'       => ${LDAP_ENABLED:-false}," /app/config.php
 	sed -i "/^];/i\        'host'          => '${LDAP_HOST:-ldap}'," /app/config.php

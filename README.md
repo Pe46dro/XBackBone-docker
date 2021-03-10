@@ -128,6 +128,17 @@ chown -R 1000:1000 /srv/xbb
 git clone https://github.com/Pe46dro/XBackBone-docker.git .
 docker-compose up -d
 ```
+
+# LDAP Authentication
+The following environment variables are available to configure LDAP authentication:
+- ``LDAP_ENABLED``
+- ``LDAP_HOST``
+- ``LDAP_PORT``
+- ``LDAP_BASE_DOMAIN``
+- ``LDAP_USER_DOMAIN``
+- ``LDAP_RDN_ATTRIBUTE``
+See the [docs](https://xbackbone.app/configuration.html#ldap-authentication) for explanation.
+
 # Upgrade from version < 3.1.4
 Run the following command before performing the upgrade:
 `echo '-' > YOUR_STORAGE_VOLUME/storage/.installed`
