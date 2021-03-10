@@ -137,6 +137,7 @@ The following environment variables are available to configure LDAP authenticati
 - ``LDAP_BASE_DOMAIN``
 - ``LDAP_USER_DOMAIN``
 - ``LDAP_RDN_ATTRIBUTE``
+
 See the [docs](https://xbackbone.app/configuration.html#ldap-authentication) for explanation.
 
 # Upgrade from version < 3.1.4
