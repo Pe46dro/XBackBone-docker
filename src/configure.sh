@@ -26,6 +26,26 @@ if [ "${DB_TYPE:-sqlite}" == "mysql" ]; then
 	sed -i "s/'password'   => null/'password'   => '$MYSQL_PASSWORD'/g" /app/config.php
 fi
 
+sed -i "/'ldap' *=>/d" /app/config.php
+sed -i "/'enabled' *=>/d" /app/config.php
+sed -i "/'host' *=>/d" /app/config.php
+sed -i "/'port' *=>/d" /app/config.php
+sed -i "/'base_domain' *=>/d" /app/config.php
+sed -i "/'user_domain' *=>/d" /app/config.php
+sed -i "/'rdn_attribute' *=>/d" /app/config.php
+sed -i "/], *\/\/ldap end/d" /app/config.php
+
+if [ "${LDAP_ENABLED:-false}" == "true" ]; then
+	sed -i "/^];/i\    'ldap' => [" config.php
+	sed -i "/^];/i\        'enabled'       => ${LDAP_ENABLED:-false}," /app/config.php
+	sed -i "/^];/i\        'host'          => '${LDAP_HOST:-ldap}'," /app/config.php
+	sed -i "/^];/i\        'port'          => ${LDAP_PORT:-389}," /app/config.php
+	sed -i "/^];/i\        'base_domain'   => '${LDAP_BASE_DOMAIN:-dc=example,dc=com}'," /app/config.php
+	sed -i "/^];/i\        'user_domain'   => '${LDAP_USER_DOMAIN:-ou=Users}'," /app/config.php
+	sed -i "/^];/i\        'rdn_attribute' => '${LDAP_RDN_ATTRIBUTE:-uid=}'," /app/config.php
+	sed -i "/^];/i\    ], //ldap end" config.php
+fi
+
 if [ ! -f /app/storage/.installed ]; then
 	su -c "php /app/bin/migrate --install" $CONTAINER_UID
 	su -c "php /app/bin/migrate" $CONTAINER_UID
