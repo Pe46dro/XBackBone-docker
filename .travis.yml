@@ -69,8 +69,8 @@ jobs:
         - bash tests/clear.sh
     - stage: build docker image
       script:
-        - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-        - docker build -t xbackbone-docker .
+        - echo "$DOCKER_PASSWORD" | docker login -u="$DOCKER_USERNAME" --password-stdin
+        - docker build -t xbackbone-docker ./src/
         - docker images
         - docker tag xbackbone-docker $DOCKER_USERNAME/xbackbone-docker
         - docker push $DOCKER_USERNAME/xbackbone-docker
