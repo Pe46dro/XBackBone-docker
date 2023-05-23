@@ -140,6 +140,12 @@ The following environment variables are available to configure LDAP authenticati
 
 See the [docs](https://xbackbone.app/configuration.html#ldap-authentication) for explanation.
 
+# Manual configuration
+
+Sometimes, it's more convenient to supply a `config.php` file yourself. To skip the
+auto-configuration (and prevent mangling of the configuration), set the `SKIP_CONFIGURE` environment
+variable to any value.
+
 # Upgrade from version < 3.1.4
 Run the following command before performing the upgrade:
 `echo '-' > YOUR_STORAGE_VOLUME/storage/.installed`
